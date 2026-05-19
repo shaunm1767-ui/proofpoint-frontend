@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ProofPoint Live Status</title>
+  <style>
+    body { font-family: Arial; background:#0f172a; color:#e2e8f0; padding:30px; }
+    .card { background:#1e293b; padding:20px; border-radius:12px; margin-bottom:15px; }
+    .ok { color:#22c55e; }
+    .bad { color:#ef4444; }
+  </style>
+</head>
+
+<body>
+  <h1>ProofPoint System Dashboard</h1>
+
+  <div class="card">
+    <h2>API Status</h2>
+    <div id="api">Checking...</div>
+  </div>
+
+  <div class="card">
+    <h2>Version</h2>
+    stable-firebase-working-2026-05-19
+  </div>
+
+  <div class="card">
+    <h2>GitHub</h2>
+    shaunm1767-ui/proofpoint-frontend
+  </div>
+
+<script>
+fetch("https://us-central1-proofpoint-rfobg.cloudfunctions.net/api")
+  .then(r => r.text())
+  .then(d => {
+    document.getElementById("api").innerHTML =
+      "<span class='ok'>✔ LIVE</span><br>" + d;
+  })
+  .catch(() => {
+    document.getElementById("api").innerHTML =
+      "<span class='bad'>✖ DOWN</span>";
+  });
+</script>
+
+</body>
+</html>

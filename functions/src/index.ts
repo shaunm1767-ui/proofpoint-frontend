@@ -8,3 +8,9 @@ export const api = onRequest((req, res) => {
     time: new Date().toISOString()
   });
 });
+import * as functions from "firebase-functions";
+
+export const dashboard = functions.https.onRequest((req, res) => {
+  res.set("Content-Type", "text/html");
+  res.sendFile(__dirname + "/frontend-public-index.html");
+});
