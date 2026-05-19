@@ -1,10 +1,11 @@
 "use client";
 
+import SystemStatus from "@/components/SystemStatus";
+
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { ref, get, set } from "firebase/database";
 import { auth, db } from "../lib/firebase";
-
 // Components
 import Login from "../components/Login";
 import CloudBackup from "../components/CloudBackup";
