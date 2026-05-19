@@ -1,0 +1,21 @@
+{
+  "rules": {
+    "backup": {
+      "latest": {
+        ".read": "true",
+        ".write": "true"  // clients can upload backups
+      }
+    },
+    "images": {
+      ".read": "true",
+      ".write": "true"  // temporary: allow uploads for MVP
+    },
+    "audio": {
+      ".read": "true",
+      ".write": "true"  // temporary: allow uploads for MVP
+    },
+    // everything else
+    ".read": "true",     // everyone can read other data
+    ".write": "false"    // no writes outside defined paths
+  }
+}

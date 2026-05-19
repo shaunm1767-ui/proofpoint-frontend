@@ -1,0 +1,11 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyBg4y2w-R5qPlHRYtJ1Gy9P4KteBlbkvW0",
+  authDomain: "proofpoint-rfobg.firebaseapp.com",
+  databaseURL: "https://proofpoint-rfobg-default-rtdb.firebaseio.com",
+  projectId: "proofpoint-rfobg",
+  storageBucket: "proofpoint-rfobg.firebasestorage.app",
+  messagingSenderId: "397609826416",
+  appId: "1:397609826416:web:6cac5decc484170a0d1cb5",
+  measurementId: "G-8TDKY1JNPS"
+};
+export default firebaseConfig;

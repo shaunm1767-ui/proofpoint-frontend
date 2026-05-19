@@ -1,0 +1,34 @@
+type User @table {
+  email: String!
+  name: String
+  phone: String
+  createdAt: Timestamp!
+}
+
+type Device @table {
+  serialNumber: String!
+  brand: String!
+  model: String!
+  year: Int
+  status: String!
+  owner: User
+  createdAt: Timestamp!
+}
+
+type ProofOfPurchase @table {
+  fileUrl: String!
+  purchaseDate: Timestamp!
+  vendor: String
+  device: Device
+  owner: User
+  uploadedAt: Timestamp!
+}
+
+type Report @table {
+  type: String!
+  description: String
+  device: Device
+  reporter: User
+  createdAt: Timestamp!
+  status: String!
+}
