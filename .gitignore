@@ -67,3 +67,14 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+
+# Next.js
+.next/
+out/
+
+# Local environment
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
