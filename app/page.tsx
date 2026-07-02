@@ -18,20 +18,32 @@ type StolenMap = Record<string, { reportedAt: string }>;
 
 export default function Page() {
   const [user, setUser] = useState<User | null>(null);
-  const [authLoading, setAuthLoading] = useState(true);
+  const [authLoading, setAuthLoading] = useState(false);
   const [devices, setDevices] = useState<DevicesMap>({});
   const [stolen, setStolen] = useState<StolenMap>({});
   const [lastBackup, setLastBackup] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   // Listen to auth changes
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-      setAuthLoading(false);
-    });
-    return () => unsubscribe();
-  }, []);
+useEffect(() => {
+  console.log("ProofPoint auth check started");
+
+  const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+    console.log("ProofPoint auth result:", firebaseUser);
+    setUser(firebaseUser);
+    setAuthLoading(false);
+  });
+
+  const timeout = setTimeout(() => {
+    console.log("Auth timeout - showing login");
+    setAuthLoading(false);
+  }, 4000);
+
+  return () => {
+    clearTimeout(timeout);
+    unsubscribe();
+  };
+}, []);
 
   // Load user data
   useEffect(() => {
@@ -76,7 +88,7 @@ export default function Page() {
     alert("System Backup complete ✅");
   };
 
-  if (authLoading) return <h1>Loading ProofPoint…</h1>;
+  // if (authLoading) return <h1>Loading ProofPoint…</h1>;
   if (!user) return <Login onLoginSuccess={() => setUser(auth.currentUser)} />;
   if (loading) return <h1>Loading user data…</h1>;
 
